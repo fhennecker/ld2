@@ -2,12 +2,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.signal import convolve2d
 
-#  np.random.seed(42)
-size = 20
-# grid = np.random.rand(size, size) > 0.5
-# plt.imshow(grid, interpolation="nearest")
-# plt.show()
-
 def m(v):
     """Moore kernel"""
     return np.array([[v]*3, [v, 0, v], [v]*3])
