@@ -2,10 +2,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.signal import convolve2d
 
-np.random.seed(42)
-size = 600
-# grid = np.random.randint(2, size=(size,size))
-grid = np.random.rand(size, size) > 0.5
+#  np.random.seed(42)
+size = 20
+# grid = np.random.rand(size, size) > 0.5
 # plt.imshow(grid, interpolation="nearest")
 # plt.show()
 
@@ -35,17 +34,33 @@ def new_state(grid, payoffs):
             new_grid[row, col] = grid[max_index]
     return new_grid
                         
-print(payoffs(grid))
-coop = []
-from time import time
-start = time()
-for i in range(100):
-    grid = new_state(grid, payoffs(grid))
-    coop.append(grid.mean())
-print(time()-start)
+n_simulations = 100
+n_steps = 60
+coop = np.zeros((n_simulations, n_steps))
 
-plt.imshow(grid, interpolation='nearest')
+for s in range(n_simulations):
+    print(s)
+    grid = np.random.randint(2, size=(size,size))
+    for i in range(n_steps):
+        coop[s,i] += grid.mean()
+        grid = new_state(grid, payoffs(grid))
+
+plt.figure(1, figsize=(10,4))
+axlines = plt.axes([0.06,0.15, 0.58, 0.85])
+axhist = plt.axes([0.67,0.15, 0.32,0.85])
+axhist.yaxis.set_major_formatter(plt.NullFormatter())
+axhist.set_xlabel("Final cooperation distribution")
+axlines.set_xlabel("Time")
+axlines.set_ylabel("Cooperation")
+
+for s in range(n_simulations):
+    axlines.plot(coop[s,:], 'b-', alpha=0.1)
+axlines.plot(np.mean(coop, 0), 'r', linewidth=2)
+import matplotlib.lines as mlines
+axlines.legend(loc=4, handles=[mlines.Line2D([],[], color='red',
+    linewidth=2, label='Average')])
+axlines.set_ylim([-0.1, 1.1])
+axhist.set_ylim([-0.1, 1.1])
+axhist.hist(coop[:,-1], orientation='horizontal', bins=np.arange(0,1.1,0.1))
 plt.show()
 
-plt.plot(coop)
-plt.show()
