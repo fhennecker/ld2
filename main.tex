@@ -178,4 +178,21 @@ clusters will start growing again while clusters of cooperators will continue
 expanding into defector-only regions, creating an endlessly moving pattern.
 
 
+\section{The snowdrift game}
+Let us try to understand why we set up the probability $p_{ij}$ with the
+following formula :
+
+$$ p_{ij} = \frac{
+	1 + \frac{W_j-W_i}{N(\text{max}(P,R,T,S)-\text{min}(P,R,T,S))}
+	}
+	{2}$$
+
+The inner denominator $N(\text{max}(P,R,T,S)-\text{min}(P,R,T,S))$
+normalises $W_j-W_i$ to contain it between -1 and 1. We then clearly 
+understand that $p_{ij}$ will be contained between 0 and 1. It makes sense
+to use this formula because the only variables are $W_j$ and $W_i$ : the higher
+the difference is between the two, the higher the probability of picking the 
+best payoff will be. If both payoffs are equal, $p_{ij} = \frac{1}{2}$ so 
+we will choose either one at random.
+
 \end{document}
