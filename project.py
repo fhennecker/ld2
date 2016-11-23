@@ -64,7 +64,7 @@ def snowdrift_new_state(grid, payoffs, method='moore'):
             c = choice(neighbours)
             neighbour = ((row+c[0])%size, (col+c[1])%size)
             N = 8 if method == 'moore' else 4
-            p = 1.*(1 + (payoffs[neighbour]-payoffs[row, col])/(N*10))/2
+            p = 1.*(1 + 1.*(payoffs[neighbour]-payoffs[row, col])/(N*10))/2
             if random() <= p:
                 new_grid[row, col] = grid[neighbour]
             else:
