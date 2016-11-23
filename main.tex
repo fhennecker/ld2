@@ -28,6 +28,8 @@
 \maketitle
 
 \section{The weak prisoners dilemma}
+
+\subsection{Moore neighbourhood}
 The game described in the assignment is the following :
 \begin{table}[H]
 \centering
@@ -49,7 +51,8 @@ cooperation levels once every simulation has reached a stationary state.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./fig/n50.png}
-	\caption{Hello}
+	\caption{Cooperation levels of 100 runs along with their average
+	on a 50x50 grid}
 	\label{n50}
 \end{figure}
 Note that a stationary state does not necessarily mean that all simulations
@@ -133,4 +136,41 @@ clusters or themselves because of the periodic boundary conditions.
 	\label{pr_m_convs}
 \end{figure}
 
+\subsection{Von Neumann neighbourhood}
+Figure \ref{vn50} shows the convergence levels with the Von Neumann
+neighbourhood. There are some striking differences with the Moore neighbourhood.
+First, the average convergence level is much lower, at around 40\%, and second,
+the runs do not seem to stabilise as much as with the Moore neighbourhood; 
+their period seems to be much longer. Also, no run makes it to 100\% or 0\%
+cooperation. They all stay very close to 40\% cooperation. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{./fig/vn_50.png}
+	\caption{Cooperation levels of 100 runs along with their average
+	on a 50x50 grid with the Von Neumann neighbourhood}
+	\label{vn50}
+\end{figure}
+
+Let us try to understand why this is happening by looking at an example run
+on figure \ref{vnviz}.
+
+\begin{figure}[H]
+	\centering
+	\subfloat[][$t=0$]{\includegraphics[width=.3\textwidth]{./fig/vn_s0.png}}
+	\subfloat[][$t=1$]{\includegraphics[width=.3\textwidth]{./fig/vn_s1.png}}
+	\subfloat[][$t=5$]{\includegraphics[width=.3\textwidth]{./fig/vn_s5.png}}
+	\\
+	\subfloat[][$t=10$]{\includegraphics[width=.3\textwidth]{./fig/vn_s10.png}}
+	\subfloat[][$t=20$]{\includegraphics[width=.3\textwidth]{./fig/vn_s20.png}}
+	\subfloat[][$t=50$]{\includegraphics[width=.3\textwidth]{./fig/vn_s50.png}}
+	\caption{Evolution of one run on a 50x50 grid with the Von Neumann
+	Neighbourhood}
+	\label{vnviz}
+\end{figure}
+
+A first noticeable difference is that the boundaries between cooperators and
+defectors are now more diagonal rather than horizontal or vertical. In the 
+case of the Von Neumann neighbourhood, the clusters don't expand in the same
+way because
 \end{document}
