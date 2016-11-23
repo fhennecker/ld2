@@ -211,12 +211,15 @@ we will choose either one at random.
 \subsection{Moore neighbourhood comparison}
 There are several key trends to notice on figure \ref{conv_sd}:
 \begin{enumerate}
-	\item The distribution of final cooperation levels is not bimodal
-		anymore, it only has one mode
-	\item There are no runs reaching 100\% or 0\% cooperation levels
+	\item The bimodality of the final cooperation distribution evolves; 
+		early on, there is only one mode but as simulations manage to
+		reach either full or zero cooperation, two modes emerge
 	\item In the prisoners dilemma, the average for the runs reaching a
-		non-zero cooperation level was around 85\% percent; it is 
-		much lower here at just less than 40\%.
+		non-zero cooperation level was around 85\% percent; in this
+		case, it is harder to estimate. as it looks like the cooperation
+		converges at 40\% for large grids, but we could argue that 
+		this level could change much later as the simulations reach
+		100\% or 0\% cooperation just like in the case of the 4x4 grid
 	\item \textbf{Perhaps the most interesting one}, the standard 
 		deviation of the final cooperation distribution seems to
 		decrease as the size of the grid grows.
@@ -248,19 +251,24 @@ coin many times, the probability of having only heads is very low,
 the probability of a quarter of the cells choosing to defect at the same time
 is not so low for the 4x4 grid but is quite low for the 50x50 grid. \\
 
-Let us now look at a run. Seeing that the simulations seem to reach a stationary
-state within about 5 iterations, we will only plot the first 6 iterations
-instead of iterations 0, 1, 5, 10, 20 and 50 for the prisoners dilemma.
+However, we could expect that after a very long time, all the runs will end up
+taking a path that will take them to 100\% or 0\% cooperation. As the grid
+grows larger, this path becomes more and more unlikely of course, and this is
+why we see the runs converging to 100\% and 0\% on the 4x4 grid, and we start
+seeing runs converging to 0\% on the 8x8 grid. This is only a hypothesis 
+though.\\
+
+Let us now look at a run.
 
 \begin{figure}[H]
 	\centering
 	\subfloat[][$t=0$]{\includegraphics[width=.3\textwidth]{./fig/sd_s0.png}}
 	\subfloat[][$t=1$]{\includegraphics[width=.3\textwidth]{./fig/sd_s1.png}}
-	\subfloat[][$t=2$]{\includegraphics[width=.3\textwidth]{./fig/sd_s2.png}}
+	\subfloat[][$t=5$]{\includegraphics[width=.3\textwidth]{./fig/sd_s2.png}}
 	\\
-	\subfloat[][$t=3$]{\includegraphics[width=.3\textwidth]{./fig/sd_s3.png}}
-	\subfloat[][$t=4$]{\includegraphics[width=.3\textwidth]{./fig/sd_s4.png}}
-	\subfloat[][$t=5$]{\includegraphics[width=.3\textwidth]{./fig/sd_s5.png}}
+	\subfloat[][$t=10$]{\includegraphics[width=.3\textwidth]{./fig/sd_s3.png}}
+	\subfloat[][$t=20$]{\includegraphics[width=.3\textwidth]{./fig/sd_s4.png}}
+	\subfloat[][$t=50$]{\includegraphics[width=.3\textwidth]{./fig/sd_s5.png}}
 	\caption{Evolution of one run on a 50x50 grid with the snowdrift game
 	and the Moore neighbourhood}
 	\label{sdrun}
@@ -273,9 +281,10 @@ not pick it as our comparison cell, and if we do pick it, we won't copy the
 neighbouring cell's behaviour with certainty.
 
 \subsection{Von Neumann neighbourhood}
-Figure \ref{sd_vn50} shows that the Von Neumann neighbourhood doesn't make 
-too much of a difference with the Moore neighbourhood in the context of the 
-snowdrift game.
+Figure \ref{sd_vn50} shows that the Von Neumann neighbourhood impacts not
+only the speed at which the simulations converge to a stationary state, but
+also the cooperation level average at convergence; which is at 20\% instead
+of 40\%. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./fig/sd_vn_50.png}
