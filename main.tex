@@ -240,8 +240,37 @@ Moore neighbourhood while all the defectors will get 10, so the defectors will
 have a tendency to start cooperating. However, if a defector is surrounded by
 cooperators, it will get the highest payoff and the cooperators will have a 
 tendency to start defecting. The reason why the equilibrium is lower than 50\%
-is that defecting gives a higher payoff than cooperating. 
+is that defecting gives a higher payoff than cooperating. \\
 
-The probability of a quarter of the cells choosing to defect at the same time
-is very high for  4x4 
+The reason why the standard deviation seems to decrease as we increase the grid 
+size can be explained by the law of large numbers. Just like when we flip a
+coin many times, the probability of having only heads is very low, 
+the probability of a quarter of the cells choosing to defect at the same time
+is not so low for the 4x4 grid but is quite low for the 50x50 grid. \\
+
+Let us now look at a run. Seeing that the simulations seem to reach a stationary
+state within about 5 iterations, we will only plot the first 6 iterations
+instead of iterations 0, 1, 5, 10, 20 and 50 for the prisoners dilemma.
+
+\begin{figure}[H]
+	\centering
+	\subfloat[][$t=0$]{\includegraphics[width=.3\textwidth]{./fig/sd_s0.png}}
+	\subfloat[][$t=1$]{\includegraphics[width=.3\textwidth]{./fig/sd_s1.png}}
+	\subfloat[][$t=2$]{\includegraphics[width=.3\textwidth]{./fig/sd_s2.png}}
+	\\
+	\subfloat[][$t=3$]{\includegraphics[width=.3\textwidth]{./fig/sd_s3.png}}
+	\subfloat[][$t=4$]{\includegraphics[width=.3\textwidth]{./fig/sd_s4.png}}
+	\subfloat[][$t=5$]{\includegraphics[width=.3\textwidth]{./fig/sd_s5.png}}
+	\caption{Evolution of one run on a 50x50 grid with the snowdrift game
+	and the Moore neighbourhood}
+	\label{sdrun}
+\end{figure}
+
+We can indeed see that the grid doesn't change too much from one iteration to
+the next. This is partly due to the fact that in the case where a neighbouring
+cell has a higher payoff than us (which is not necessarily the case), we might
+not pick it as our comparison cell, and if we do pick it, we won't copy the
+neighbouring cell's behaviour with certainty.
+
+
 \end{document}
