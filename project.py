@@ -118,5 +118,12 @@ def show_at_steps(size, steps, method, game):
 
 
 if __name__ == '__main__':
-    plot_n_runs(100, 60, 12, "moore", 'prisoner')
+    #  plot_n_runs(100, 60, 50, "vn", 'snowdrift')
     #  show_at_steps(50, range(20), 'moore', 'snowdrift')
+
+    grid = np.zeros((50,50))
+    grid[24:27,24:27] = 1
+    for i in range(50):
+        plt.imshow(grid, interpolation='NEAREST', cmap='cool')
+        plt.waitforbuttonpress()
+        grid = new_state(grid, payoffs(grid, 'vn'), 'vn')
