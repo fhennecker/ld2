@@ -179,6 +179,19 @@ expanding into defector-only regions, creating an endlessly moving pattern.
 
 
 \section{The snowdrift game}
+The snowdrift game is the following :
+\begin{table}[H]
+\centering
+\begin{tabular}{c|cc|cc}
+	& \multicolumn{2}{c|}{\textbf{C}} & \multicolumn{2}{c}{\textbf{D}}\\
+	\hline
+	\textbf{C} && 7 && 10\\
+	& 7 && 3 &\\
+	\hline
+	\textbf{D} && 3 && 0\\
+	& 10 && 0 &\\
+\end{tabular}
+\end{table}
 Let us try to understand why we set up the probability $p_{ij}$ with the
 following formula :
 
@@ -220,4 +233,15 @@ There are several key trends to notice on figure \ref{conv_sd}:
 	neighbourhood}
 	\label{conv_sd}
 \end{figure}
+
+Intuitively, it makes sense that the equilibrium state is around 40\%. If a 
+cooperator is surrounded by defectors, it will still get a payoff of 24 with the
+Moore neighbourhood while all the defectors will get 10, so the defectors will
+have a tendency to start cooperating. However, if a defector is surrounded by
+cooperators, it will get the highest payoff and the cooperators will have a 
+tendency to start defecting. The reason why the equilibrium is lower than 50\%
+is that defecting gives a higher payoff than cooperating. 
+
+The probability of a quarter of the cells choosing to defect at the same time
+is very high for  4x4 
 \end{document}
