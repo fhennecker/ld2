@@ -195,4 +195,29 @@ the difference is between the two, the higher the probability of picking the
 best payoff will be. If both payoffs are equal, $p_{ij} = \frac{1}{2}$ so 
 we will choose either one at random.
 
+\subsection{Moore neighbourhood comparison}
+There are several key trends to notice on figure \ref{conv_sd}:
+\begin{enumerate}
+	\item The distribution of final cooperation levels is not bimodal
+		anymore, it only has one mode
+	\item There are no runs reaching 100\% or 0\% cooperation levels
+	\item In the prisoners dilemma, the average for the runs reaching a
+		non-zero cooperation level was around 85\% percent; it is 
+		much lower here at just less than 40\%.
+	\item \textbf{Perhaps the most interesting one}, the standard 
+		deviation of the final cooperation distribution seems to
+		decrease as the size of the grid grows.
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\subfloat[][4x4]{\includegraphics[width=.5\textwidth]{./fig/sd_n4.png}}
+	\subfloat[][8x8]{\includegraphics[width=.5\textwidth]{./fig/sd_n8.png}}\\
+	\subfloat[][12x12]{\includegraphics[width=.5\textwidth]{./fig/sd_n12.png}}
+	\subfloat[][20x20]{\includegraphics[width=.5\textwidth]{./fig/sd_n20.png}}\\
+	\subfloat[][50x50]{\includegraphics[width=.5\textwidth]{./fig/sd_n50.png}}
+	\caption{Convergence of 100 runs for various grid sizes with the Moore
+	neighbourhood}
+	\label{conv_sd}
+\end{figure}
 \end{document}
